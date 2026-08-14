@@ -407,20 +407,7 @@
                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                 </div>
 
-                <!-- 2. 電話 PHONE (entry.1850448790) -->
-                <div>
-                    <label for="entry_1850448790" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
-                        電話 <span class="font-garamond font-normal text-gray-400">PHONE</span> <span class="text-red-400">*</span>
-                    </label>
-                    <input type="tel" 
-                           name="entry.1850448790" 
-                           id="entry_1850448790" 
-                           required 
-                           placeholder="請輸入您的聯絡電話"
-                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
-                </div>
-
-                <!-- 3. 與新人關係 RELATIONSHIP (entry.1633251042) -->
+                <!-- 2. 與新人關係 RELATIONSHIP (entry.1633251042) -->
                 <div>
                     <label for="entry_1633251042" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                         與新人關係 <span class="font-garamond font-normal text-gray-400">RELATIONSHIP</span> <span class="text-red-400">*</span>
@@ -438,7 +425,7 @@
                     </select>
                 </div>
 
-                <!-- 4. 出席意願 ATTENDANCE (entry.1486555222) -->
+                <!-- 3. 出席意願 ATTENDANCE (entry.1486555222) -->
                 <div>
                     <label for="entry_1486555222" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                         請問您是否可撥空參加我們的婚禮？ <span class="font-garamond font-normal text-gray-400">ATTENDANCE</span> <span class="text-red-400">*</span>
@@ -458,7 +445,7 @@
                 <!-- DYNAMIC ATTENDANCE DETAILS (Shows ONLY when 出席意願 == '非常願意，我一定會到！') -->
                 <div id="attendanceDetailsSection" class="hidden space-y-6 pt-2 border-t border-dashed border-gray-200">
                     
-                    <!-- 5. 午宴人數 LUNCHEON ATTENDEES (entry.855032257) -->
+                    <!-- 4. 午宴人數 LUNCHEON ATTENDEES (entry.855032257) -->
                     <div>
                         <label for="entry_855032257" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             參加午宴人數(預計11:30開始) <span class="font-garamond font-normal text-gray-400">LUNCHEON ATTENDEES</span>
@@ -473,7 +460,7 @@
                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                     </div>
 
-                    <!-- 6. 證婚人數 CEREMONY ATTENDEES (entry.405115918) -->
+                    <!-- 5. 證婚人數 CEREMONY ATTENDEES (entry.405115918) -->
                     <div>
                         <label for="entry_405115918" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             參加證婚儀式人數(預計09:30開始) <span class="font-garamond font-normal text-gray-400">CEREMONY ATTENDEES</span>
@@ -487,7 +474,7 @@
                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                     </div>
 
-                    <!-- 7. 飲食需求 DIETARY PREFERENCE (entry.950824364) -->
+                    <!-- 6. 飲食需求 DIETARY PREFERENCE (entry.950824364) -->
                     <!-- Hidden field to post structured string directly to Google Form Dietary Question -->
                     <input type="hidden" name="entry.950824364" id="entry_950824364" value="">
 
@@ -520,7 +507,7 @@
                         <div id="dietaryValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
                     </div>
 
-                    <!-- 8. 兒童座椅 CHILD SEATS (entry.850592703) -->
+                    <!-- 7. 兒童座椅 CHILD SEATS (entry.850592703) -->
                     <div>
                         <label for="entry_850592703" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             兒童座椅需求 <span class="font-garamond font-normal text-gray-400">CHILD SEATS NEEDED</span>
@@ -535,7 +522,7 @@
 
                 </div>
 
-                <!-- 9. 喜帖索取需求 INVITATION PREFERENCE (entry.1211188340) -->
+                <!-- 8. 喜帖索取需求 INVITATION PREFERENCE (entry.1211188340) -->
                 <div class="pt-2 border-t border-dashed border-gray-200">
                     <label for="invitation_type" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                         是否需要寄送喜帖？ <span class="font-garamond font-normal text-gray-400">INVITATION REQUEST</span>
@@ -551,7 +538,7 @@
                     </select>
                 </div>
 
-                <!-- 10. 電子郵件 EMAIL (entry.1240707661) -->
+                <!-- 9. 電子郵件 EMAIL (entry.1240707661) -->
                 <div id="emailGroup" class="hidden">
                     <label for="entry_1240707661" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                         電子郵件 <span class="font-garamond font-normal text-gray-400">EMAIL</span> <span class="text-red-400">*</span>
@@ -565,7 +552,7 @@
 
                 <!-- 紙本喜帖地址區塊 -->
                 <div id="paperAddressGroup" class="hidden space-y-6">
-                    <!-- 11. 郵遞區號 POSTAL CODE (entry.2067402011) -->
+                    <!-- 10. 郵遞區號 POSTAL CODE (entry.2067402011) -->
                     <div>
                         <label for="entry_2067402011" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             郵遞區號 <span class="font-garamond font-normal text-gray-400">POSTAL CODE</span>
@@ -577,7 +564,7 @@
                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                     </div>
 
-                    <!-- 12. 喜帖寄送地址 ADDRESS (entry.488205070) -->
+                    <!-- 11. 喜帖寄送地址 ADDRESS (entry.488205070) -->
                     <div>
                         <label for="entry_488205070" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             喜帖寄送地址 <span class="font-garamond font-normal text-gray-400">MAILING ADDRESS</span> <span class="text-red-400">*</span>
@@ -590,7 +577,7 @@
                     </div>
                 </div>
 
-                <!-- 13. 祝福的話 BLESSINGS (entry.604577379) -->
+                <!-- 12. 祝福的話 BLESSINGS (entry.604577379) -->
                 <div>
                     <label for="entry_604577379" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                         留給我們的祝福 <span class="font-garamond font-normal text-gray-400">BLESSINGS</span>
