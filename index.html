@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zh-TW" class="scroll-smooth">
 <head>
@@ -129,21 +128,23 @@
     </nav>
 
     <!-- Hero Fullscreen Cover Background -->
-    <header class="relative min-h-screen flex items-center justify-center text-center px-4 overflow-hidden">
-        <!-- Background Image with Soft Warm Overlay -->
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transform scale-105 transition-transform duration-10000"
-             style="background-image: url('https://i.postimg.cc/RhG2Q0rn/20260619-00103.jpg');">
+    <header class="relative min-h-[115vh] md:min-h-[120vh] flex items-center justify-center text-center px-4 overflow-hidden">
+        <!-- Background Image with Soft Warm Overlay & Re-centered Position -->
+        <div class="absolute inset-0 bg-cover bg-no-repeat z-0 transform scale-105 transition-transform duration-10000"
+             style="background-image: url('https://i.postimg.cc/63gv7WPg/20260619-00191xie-ka-A-400P.jpg'); background-position: 30% center;">
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/60"></div>
         </div>
 
-        <div class="relative z-10 text-white max-w-3xl mx-auto px-4 pt-16 flex flex-col items-center">
+        <div class="relative z-10 text-white max-w-3xl mx-auto px-4 pt-28 md:pt-36 pb-16 flex flex-col items-center">
             <p class="font-garamond italic text-lg md:text-2xl tracking-widest text-morandi-warm mb-3 uppercase">Wedding Invitation</p>
-            
-            <h1 class="font-garamond text-4xl sm:text-6xl md:text-7xl font-light tracking-wide mb-3 text-center flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4">
-                <span class="whitespace-nowrap">Alex Tseng</span>
-                <span class="text-morandi-warm font-serif italic text-3xl sm:text-5xl md:text-6xl my-1 sm:my-0">&amp;</span>
-                <span class="whitespace-nowrap">Chelsy Lai</span>
+
+            <!-- Main Dynamic Responsive Title -->
+            <h1 class="font-garamond text-4xl md:text-7xl font-light tracking-wide mb-3 text-center flex flex-col md:flex-row items-center justify-center gap-1 md:gap-4">
+                <span class="whitespace-nowrap font-normal">Alex Tseng</span>
+                <span class="text-morandi-warm font-serif italic text-3xl md:text-6xl my-1 md:my-0">&amp;</span>
+                <span class="whitespace-nowrap font-normal">Chelsy Lai</span>
             </h1>
+
             <p class="text-lg md:text-2xl font-serif tracking-widest text-white/95 mb-4">
                 得剛 <span class="text-morandi-warm">&amp;</span> 郁婷
             </p>
@@ -175,7 +176,7 @@
         
         <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12 text-sm md:text-base font-light">
             我們渴望探索下一個世界，珍惜每一次的遇見。<br>從相識、相知到相惜，攜手走過的每一步，都讓未來的旅程逐漸有了光。<br class="hidden sm:inline">
-            而您，也是我們生命中可貴的遇見。<br class="hidden sm:inline">誠摯邀請您，與我們一同分享這份幸福與喜悅。
+            而您，也是我們生命中珍貴的遇見。誠摯邀請您，一同分享這份幸福與喜悅。
         </p>
 
         <!-- Countdown Timer -->
@@ -320,10 +321,13 @@
                     <i id="icon-driving" class="fa-solid fa-chevron-down text-gray-400 text-xs transition-transform duration-300"></i>
                 </button>
                 <div id="acc-driving" class="accordion-content border-t border-gray-100 bg-stone-50/50">
-                    <div class="p-6 text-sm text-gray-600 leading-relaxed">
-                        <p class="flex items-center">
-                            <i class="fa-solid fa-square-parking text-morandi-warm mr-2"></i>
-                            賓客皆可享有飯店免費停車。
+                    <div class="p-6 text-sm text-gray-600 leading-relaxed space-y-2">
+                        <p class="flex items-start sm:items-center">
+                            <i class="fa-solid fa-square-parking text-morandi-warm mr-2 mt-0.5 sm:mt-0"></i>
+                            <span>賓客皆可享有飯店免費停車。（車位有限，請儘早入場）</span>
+                        </p>
+                        <p class="text-xs text-amber-700/80 font-medium pl-6">
+                            ※溫馨提示：理性飲酒，喝酒請勿開車
                         </p>
                     </div>
                 </div>
@@ -338,37 +342,36 @@
                     <i id="icon-transit" class="fa-solid fa-chevron-down text-gray-400 text-xs transition-transform duration-300"></i>
                 </button>
                 <div id="acc-transit" class="accordion-content border-t border-gray-100 bg-stone-50/50">
-                    <div class="p-6 space-y-4 text-sm text-gray-600 leading-relaxed">
-                        <div class="border-b border-gray-200/60 pb-3 last:border-b-0 last:pb-0">
-                            <span class="font-medium text-gray-800 block mb-1">
-                                <span class="whitespace-nowrap">國光1815路線</span>（台北車站-金青中心/法鼓山）
-                            </span>
-                            <p class="text-xs md:text-sm text-gray-500">
+                    <div class="p-6 space-y-5 text-sm text-gray-600 leading-relaxed">
+                        <!-- 群組 1：金山區公所 -->
+                        <div class="border-b border-gray-200/60 pb-4">
+                            <div class="space-y-1.5 mb-2">
+                                <p class="font-medium text-gray-800">
+                                    <span class="whitespace-nowrap">國光1815路線</span>（台北車站-金青中心/法鼓山）
+                                </p>
+                                <p class="font-medium text-gray-800">
+                                    <span class="whitespace-nowrap">淡水客運862路線</span>（淡水-基隆）、<span class="whitespace-nowrap">863路線</span>（淡水-金山）
+                                </p>
+                            </div>
+                            <p class="text-xs md:text-sm text-gray-500 flex items-center mt-1">
+                                <i class="fa-solid fa-person-walking text-morandi-sage mr-1.5"></i>
                                 於「金山區公所」站牌下車後步行約 15 分鐘。
                             </p>
                         </div>
-                        <div class="border-b border-gray-200/60 pb-3 last:border-b-0 last:pb-0">
-                            <span class="font-medium text-gray-800 block mb-1">
-                                <span class="whitespace-nowrap">淡水客運862路線</span>（淡水-基隆）、<span class="whitespace-nowrap">863路線</span>（淡水-金山）
-                            </span>
-                            <p class="text-xs md:text-sm text-gray-500">
-                                於「金山區公所」站牌下車後步行約 15 分鐘。
-                            </p>
-                        </div>
-                        <div class="border-b border-gray-200/60 pb-3 last:border-b-0 last:pb-0">
-                            <span class="font-medium text-gray-800 block mb-1">
-                                <span class="whitespace-nowrap">基隆客運790路線</span>（基隆-金山）
-                            </span>
-                            <p class="text-xs md:text-sm text-gray-500">
-                                於「中正路」或「金山醫院」站牌兩者皆可下車，下車後步行約 6 分鐘。
-                            </p>
-                        </div>
+
+                        <!-- 群組 2：金山醫院 -->
                         <div class="pb-1">
-                            <span class="font-medium text-gray-800 block mb-1">
-                                <span class="whitespace-nowrap">基隆客運953路線</span>（金山－北科大/板橋）
-                            </span>
-                            <p class="text-xs md:text-sm text-gray-500">
-                                於「金山醫院」站牌下車，下車後步行約 6 分鐘。
+                            <div class="space-y-1.5 mb-2">
+                                <p class="font-medium text-gray-800">
+                                    <span class="whitespace-nowrap">基隆客運790路線</span>（基隆-金山）
+                                </p>
+                                <p class="font-medium text-gray-800">
+                                    <span class="whitespace-nowrap">基隆客運953路線</span>（臺大計資中心-金山醫院）
+                                </p>
+                            </div>
+                            <p class="text-xs md:text-sm text-gray-500 flex items-center mt-1">
+                                <i class="fa-solid fa-person-walking text-morandi-sage mr-1.5"></i>
+                                於「中正路」或「金山醫院」站牌兩者皆可下車，下車後步行約 6 分鐘。
                             </p>
                         </div>
                     </div>
