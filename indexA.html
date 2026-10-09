@@ -128,14 +128,14 @@
     </nav>
 
     <!-- Hero Fullscreen Cover Background -->
-    <header class="relative min-h-[115vh] md:min-h-[120vh] flex items-center justify-center text-center px-4 overflow-hidden">
-        <!-- Background Image with Soft Warm Overlay & Re-centered Position -->
-        <div class="absolute inset-0 bg-cover bg-no-repeat z-0 transform scale-105 transition-transform duration-10000"
-             style="background-image: url('https://i.postimg.cc/63gv7WPg/20260619-00191xie-ka-A-400P.jpg'); background-position: 30% center;">
+    <header class="relative min-h-[115vh] md:min-h-[140vh] flex items-center justify-center text-center px-4 overflow-hidden">
+        <!-- Background Image with Soft Warm Overlay & Responsive Positioning -->
+        <div class="absolute inset-0 bg-cover bg-no-repeat z-0 transform scale-105 transition-transform duration-10000 bg-[position:30%_center] md:bg-[position:45%_center]"
+             style="background-image: url('https://i.postimg.cc/63gv7WPg/20260619-00191xie-ka-A-400P.jpg');">
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/25 to-black/60"></div>
         </div>
 
-        <div class="relative z-10 text-white max-w-3xl mx-auto px-4 pt-28 md:pt-36 pb-16 flex flex-col items-center">
+        <div class="relative z-10 text-white max-w-3xl mx-auto px-4 pt-28 md:pt-52 pb-16 flex flex-col items-center">
             <p class="font-garamond italic text-lg md:text-2xl tracking-widest text-morandi-warm mb-3 uppercase">Wedding Invitation</p>
 
             <!-- Main Dynamic Responsive Title -->
@@ -175,8 +175,9 @@
         <h2 class="text-2xl md:text-3xl font-semibold tracking-wider mb-6 text-morandi-charcoal">關於我們</h2>
         
         <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12 text-sm md:text-base font-light">
-            我們渴望探索下一個世界，珍惜每一次的遇見。<br>從相識、相知到相惜，攜手走過的每一步，都讓未來的旅程逐漸有了光。<br class="hidden sm:inline">
-            而您，也是我們生命中珍貴的遇見。誠摯邀請您，一同分享這份幸福與喜悅。
+            我們渴望探索下一個世界，珍惜每一次的遇見。<br>從相識、相知到相惜，攜手走過的每一步，都讓未來的旅程逐漸有了光。<br>
+            而您，也是我們生命中可貴的遇見。<br>
+            誠摯邀請您，一同分享這份幸福與喜悅。
         </p>
 
         <!-- Countdown Timer -->
@@ -234,12 +235,12 @@
                                 <i class="fa-solid fa-church"></i>
                             </div>
                             <div>
-                                <h3 class="text-lg font-semibold tracking-wide">婚禮儀式</h3>
+                                <h3 class="text-lg font-semibold tracking-wide">證婚儀式</h3>
                                 <p class="text-xs text-gray-400 uppercase font-garamond tracking-wider">WEDDING CEREMONY</p>
                             </div>
                         </div>
                         <span class="px-3 py-1 bg-amber-50 text-morandi-warm border border-amber-200/50 rounded-full text-xs font-medium self-start sm:self-auto">
-                            上午時段
+                            場地空間有限
                         </span>
                     </div>
 
@@ -276,7 +277,7 @@
                             </div>
                         </div>
                         <span class="px-3 py-1 bg-emerald-50 text-morandi-sage border border-emerald-200/50 rounded-full text-xs font-medium self-start sm:self-auto">
-                            午間時段
+                            敬請準時入席
                         </span>
                     </div>
 
@@ -312,6 +313,7 @@
         </div>
 
         <div class="max-w-2xl mx-auto space-y-4">
+            <!-- 1. 自行開車 Accordion -->
             <div class="border border-stone-200 bg-white rounded-2xl overflow-hidden shadow-sm">
                 <button class="accordion-header w-full px-6 py-4 text-left font-medium text-gray-800 flex justify-between items-center focus:outline-none hover:bg-morandi-sand/30 transition-colors" onclick="toggleAccordion('acc-driving', 'icon-driving')">
                     <span class="flex items-center text-sm md:text-base">
@@ -326,54 +328,57 @@
                             <i class="fa-solid fa-square-parking text-morandi-warm mr-2 mt-0.5 sm:mt-0"></i>
                             <span>賓客皆可享有飯店免費停車。（車位有限，請儘早入場）</span>
                         </p>
-                        <p class="text-xs text-amber-700/80 font-medium pl-6">
-                            ※溫馨提示：理性飲酒，喝酒請勿開車
-                        </p>
+                        <div class="text-xs text-amber-700/80 font-medium pl-6 space-y-1">
+                            <p>※溫馨提示：理性飲酒，喝酒請勿開車。</p>
+                            <p>※假日出遊車潮多，易塞車，敬請賓客提早出發。</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- 2. 大眾運輸 Accordion -->
             <div class="border border-stone-200 bg-white rounded-2xl overflow-hidden shadow-sm">
                 <button class="accordion-header w-full px-6 py-4 text-left font-medium text-gray-800 flex justify-between items-center focus:outline-none hover:bg-morandi-sand/30 transition-colors" onclick="toggleAccordion('acc-transit', 'icon-transit')">
                     <span class="flex items-center text-sm md:text-base">
                         <i class="fa-solid fa-bus text-morandi-sage mr-3"></i>
-                        大眾運輸指引
+                        大眾運輸
                     </span>
                     <i id="icon-transit" class="fa-solid fa-chevron-down text-gray-400 text-xs transition-transform duration-300"></i>
                 </button>
                 <div id="acc-transit" class="accordion-content border-t border-gray-100 bg-stone-50/50">
-                    <div class="p-6 space-y-5 text-sm text-gray-600 leading-relaxed">
-                        <!-- 群組 1：金山區公所 -->
-                        <div class="border-b border-gray-200/60 pb-4">
-                            <div class="space-y-1.5 mb-2">
-                                <p class="font-medium text-gray-800">
-                                    <span class="whitespace-nowrap">國光1815路線</span>（台北車站-金青中心/法鼓山）
-                                </p>
-                                <p class="font-medium text-gray-800">
-                                    <span class="whitespace-nowrap">淡水客運862路線</span>（淡水-基隆）、<span class="whitespace-nowrap">863路線</span>（淡水-金山）
-                                </p>
+                    <div class="p-6 text-sm text-gray-600 leading-relaxed space-y-5">
+                        
+                        <!-- 站點群組 1：金山區公所 -->
+                        <div class="space-y-2">
+                            <div class="font-medium text-gray-800 flex items-center">
+                                <i class="fa-solid fa-bus-simple text-morandi-warm mr-2"></i>
+                                國光 1815 / 淡水客運 862、863
                             </div>
-                            <p class="text-xs md:text-sm text-gray-500 flex items-center mt-1">
-                                <i class="fa-solid fa-person-walking text-morandi-sage mr-1.5"></i>
-                                於「金山區公所」站牌下車後步行約 15 分鐘。
+                            <ul class="text-xs text-gray-600 pl-6 list-disc space-y-1">
+                                <li>國光 1815 路線（台北車站 - 金青中心/法鼓山）</li>
+                                <li>淡水客運 862 路線（淡水 - 基隆）</li>
+                                <li>淡水客運 863 路線（淡水 - 金山）</li>
+                            </ul>
+                            <p class="text-xs text-morandi-sage font-medium pl-6">
+                                <i class="fa-solid fa-person-walking mr-1"></i>於「金山區公所」站牌下車後步行約 15 分鐘。
                             </p>
                         </div>
 
-                        <!-- 群組 2：金山醫院 -->
-                        <div class="pb-1">
-                            <div class="space-y-1.5 mb-2">
-                                <p class="font-medium text-gray-800">
-                                    <span class="whitespace-nowrap">基隆客運790路線</span>（基隆-金山）
-                                </p>
-                                <p class="font-medium text-gray-800">
-                                    <span class="whitespace-nowrap">基隆客運953路線</span>（臺大計資中心-金山醫院）
-                                </p>
+                        <!-- 站點群組 2：中正路或金山醫院 -->
+                        <div class="border-t border-stone-200/60 pt-4 space-y-2">
+                            <div class="font-medium text-gray-800 flex items-center">
+                                <i class="fa-solid fa-bus-simple text-morandi-warm mr-2"></i>
+                                基隆客運 790、953
                             </div>
-                            <p class="text-xs md:text-sm text-gray-500 flex items-center mt-1">
-                                <i class="fa-solid fa-person-walking text-morandi-sage mr-1.5"></i>
-                                於「中正路」或「金山醫院」站牌兩者皆可下車，下車後步行約 6 分鐘。
+                            <ul class="text-xs text-gray-600 pl-6 list-disc space-y-1">
+                                <li>基隆客運 790 路線（基隆 - 金山）</li>
+                                <li>基隆客運 953 路線（臺大計資中心 - 金山醫院）</li>
+                            </ul>
+                            <p class="text-xs text-morandi-sage font-medium pl-6">
+                                <i class="fa-solid fa-person-walking mr-1"></i>於「中正路」或「金山醫院」站牌兩者皆可下車，下車後步行約 6 分鐘。
                             </p>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -469,7 +474,7 @@
                     <!-- 6. 證婚人數 CEREMONY ATTENDEES (entry.405115918) -->
                     <div>
                         <label for="entry_405115918" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
-                            參加證婚儀式人數(預計09:30開始) <span class="font-garamond font-normal text-gray-400">CEREMONY ATTENDEES</span>
+                            參加證婚儀式人數(預計10:00開始，場地空間有限) <span class="font-garamond font-normal text-gray-400">CEREMONY ATTENDEES</span>
                         </label>
                         <input type="number" 
                                name="entry.405115918" 
