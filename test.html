@@ -482,4 +482,415 @@
                         <div id="dietaryValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
                     </div>
 
-                    <!-- 接駁車搭乘意願
+                    <!-- 接駁車搭乘意願 SHUTTLE BUS (entry.663434225) -->
+                    <div>
+                        <label for="entry_663434225" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                            接駁車搭乘意願 / 人數 <span class="font-garamond font-normal text-gray-400">SHUTTLE BUS</span>
+                        </label>
+                        
+                        <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs text-amber-800 leading-relaxed mb-3 space-y-1">
+                            <p class="font-medium flex items-center">
+                                <i class="fa-solid fa-bus text-amber-600 mr-1.5"></i> 接駁車規劃說明：
+                            </p>
+                            <p class="text-amber-700/90 font-light">
+                                ※目前正在規劃中，地點為大台北市區，正確地點及發車時間待定。因車輛座位有限，目前僅作為意願調查（不保證一定有位），須請先考慮自行前往的交通備案，我們將於婚禮前主動聯繫通知。
+                            </p>
+                        </div>
+
+                        <div>
+                            <label for="entry_663434225" class="block text-xs text-gray-600 mb-1">搭乘接駁車人數 (預設 0 表示不需要)</label>
+                            <input type="number" 
+                                   name="entry.663434225" 
+                                   id="entry_663434225" 
+                                   min="0" 
+                                   max="10" 
+                                   value="0"
+                                   oninput="validateShuttleCount()"
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
+                        </div>
+                        <div id="shuttleValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
+                    </div>
+
+                    <!-- 兒童座椅 CHILD SEATS (entry.431306330) -->
+                    <div>
+                        <label for="entry_431306330" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                            兒童座椅需求 <span class="font-garamond font-normal text-gray-400">CHILD SEATS NEEDED</span>
+                        </label>
+                        <select name="entry.431306330" 
+                                id="entry_431306330" 
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
+                            <option value="不需要" selected>不需要</option>
+                            <option value="需要">需要</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- 喜帖索取需求 INVITATION PREFERENCE (entry.1211188340) -->
+                <div class="pt-2 border-t border-dashed border-gray-200">
+                    <label for="invitation_type" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                        是否需要寄送喜帖？ <span class="font-garamond font-normal text-gray-400">INVITATION REQUEST</span>
+                    </label>
+                    <select name="entry.1211188340"
+                            id="invitation_type" 
+                            onchange="toggleInvitationFields()"
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
+                        <option value="不需要" selected>不需要，我會保留這個網頁</option>
+                        <option value="需要紙本喜帖，請寄給我">需要紙本喜帖，請寄給我</option>
+                    </select>
+                </div>
+
+                <!-- 紙本喜帖地址區塊 -->
+                <div id="paperAddressGroup" class="hidden space-y-6">
+                    <div>
+                        <label for="entry_1005421117" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                            喜帖收件人姓名及電話 <span class="font-garamond font-normal text-gray-400">RECEIVER'S NAME &amp; PHONE</span> <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text"
+                               name="entry.1005421117"
+                               id="entry_1005421117"
+                               placeholder="請輸入收件者姓名及電話"
+                               autocomplete="name"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
+                    </div>
+
+                    <div>
+                        <label for="entry_2067402011" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                            郵遞區號 <span class="font-garamond font-normal text-gray-400">POSTAL CODE</span>
+                        </label>
+                        <input type="text" 
+                               name="entry.2067402011" 
+                               id="entry_2067402011" 
+                               placeholder="例如：235"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
+                    </div>
+
+                    <div>
+                        <label for="entry_488205070" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                            喜帖寄送地址 <span class="font-garamond font-normal text-gray-400">MAILING ADDRESS</span> <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text" 
+                               name="entry.488205070" 
+                               id="entry_488205070" 
+                               placeholder="請輸入喜帖寄送地址"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
+                    </div>
+                </div>
+
+                <!-- 祝福的話 BLESSINGS (entry.604577379) -->
+                <div>
+                    <label for="entry_604577379" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                        留給我們的祝福 <span class="font-garamond font-normal text-gray-400">BLESSINGS</span>
+                    </label>
+                    <textarea name="entry.604577379" 
+                              id="entry_604577379" 
+                              rows="4" 
+                              placeholder="順手留句話給我們吧....?"
+                              class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all resize-none"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-4">
+                    <button type="submit" 
+                            id="submitBtn"
+                            class="w-full py-4 bg-morandi-sage text-white text-base tracking-widest font-medium rounded-xl hover:bg-opacity-95 active:scale-[0.99] transition-all shadow-md shadow-morandi-sage/20 flex justify-center items-center">
+                        <span id="btnText">確認送出出席回函</span>
+                        <i id="btnSpinner" class="fa-solid fa-spinner fa-spin hidden ml-2"></i>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white text-center border-t border-gray-100">
+        <p class="font-garamond text-xl text-morandi-sage font-semibold tracking-wider mb-2">
+            Alex <span class="text-morandi-warm">&amp;</span> Chelsy
+        </p>
+        <p class="text-xs text-gray-400 tracking-widest">
+            THANK YOU FOR BEING PART OF OUR SPECIAL DAY
+        </p>
+    </footer>
+
+    <!-- Custom Modal for Confirmation -->
+    <div id="thankYouModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-xl transform scale-95 transition-transform duration-300" id="modalContent">
+            <div class="w-16 h-16 bg-emerald-50 text-morandi-sage rounded-full flex items-center justify-center text-2xl mx-auto mb-4">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">回函已成功送出！</h3>
+            <p class="text-sm text-gray-500 font-light leading-relaxed mb-6">
+               您能撥空填單就是一份心意祝福，我們已收到回覆，若您能前來，我們很期待在婚禮當天與您相見！😉
+            </p>
+            <button onclick="closeModal()" class="w-full py-3 bg-morandi-sage text-white rounded-xl text-sm tracking-wider font-medium hover:bg-opacity-90 transition-all">
+                關閉視窗
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Accordion Panels
+        function toggleAccordion(contentId, iconId) {
+            const content = document.getElementById(contentId);
+            const icon = document.getElementById(iconId);
+            if (!content || !icon) return;
+
+            const isOpen = content.classList.contains('active');
+            
+            document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.accordion-header i').forEach(el => el.classList.remove('rotate-180'));
+
+            if (!isOpen) {
+                content.classList.add('active');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        // Dynamic Dietary Count Validation & Auto-sync to Google Form Hidden Input (entry.950824364)
+        function validateDietaryCount() {
+            const luncheonEl = document.getElementById('entry_855032257');
+            const meatEl = document.getElementById('diet_meat_count');
+            const vegEl = document.getElementById('diet_veg_count');
+            const msgEl = document.getElementById('dietaryValidationMsg');
+            const dietHidden = document.getElementById('entry_950824364');
+
+            if (!luncheonEl || !meatEl || !vegEl || !msgEl) return true;
+
+            const luncheonCount = parseInt(luncheonEl.value, 10) || 0;
+            const meatCount = parseInt(meatEl.value, 10) || 0;
+            const vegCount = parseInt(vegEl.value, 10) || 0;
+            const totalDiet = meatCount + vegCount;
+
+            if (dietHidden) {
+                dietHidden.value = `葷食 ${meatCount} 人, 素食 ${vegCount} 人`;
+            }
+
+            if (totalDiet === luncheonCount) {
+                msgEl.className = "mt-2 text-xs font-medium px-3 py-1.5 rounded-lg bg-emerald-50 text-morandi-sage border border-emerald-200/60 flex items-center";
+                msgEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> 葷素食總和 (${totalDiet} 人) 與午宴人數 (${luncheonCount} 人) 相符`;
+                return true;
+            } else {
+                msgEl.className = "mt-2 text-xs font-medium px-3 py-1.5 rounded-lg bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center";
+                msgEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 葷素食總和 (${totalDiet} 人) 必須等於午宴人數 (${luncheonCount} 人)`;
+                return false;
+            }
+        }
+
+        // Dynamic Shuttle Bus Count Validation (entry.663434225 <= entry.855032257)
+        function validateShuttleCount() {
+            const luncheonEl = document.getElementById('entry_855032257');
+            const shuttleEl = document.getElementById('entry_663434225');
+            const msgEl = document.getElementById('shuttleValidationMsg');
+
+            if (!luncheonEl || !shuttleEl || !msgEl) return true;
+
+            const luncheonCount = parseInt(luncheonEl.value, 10) || 0;
+            const shuttleCount = parseInt(shuttleEl.value, 10) || 0;
+
+            if (shuttleCount > luncheonCount) {
+                msgEl.className = "mt-2 text-xs font-medium px-3 py-1.5 rounded-lg bg-amber-50 text-amber-700 border border-amber-200/80 flex items-center";
+                msgEl.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1.5"></i> 接駁車人數 (${shuttleCount} 人) 不得超過參加午宴人數 (${luncheonCount} 人)`;
+                return false;
+            } else if (shuttleCount > 0) {
+                msgEl.className = "mt-2 text-xs font-medium px-3 py-1.5 rounded-lg bg-emerald-50 text-morandi-sage border border-emerald-200/60 flex items-center";
+                msgEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1.5"></i> 已登記 ${shuttleCount} 位搭乘接駁車（符合午宴人數範圍）`;
+                return true;
+            } else {
+                msgEl.className = "mt-2 text-xs font-medium px-2 py-1 transition-all text-gray-500";
+                msgEl.innerHTML = `未登記搭乘接駁車`;
+                return true;
+            }
+        }
+
+        // Handle attendance dropdown change
+        function handleAttendanceChange() {
+            const attendanceEl = document.getElementById('entry_1486555222');
+            const attendance = attendanceEl ? attendanceEl.value : '';
+            const attendanceDetailsSection = document.getElementById('attendanceDetailsSection');
+
+            if (attendance === '非常願意，我一定會到！') {
+                if (attendanceDetailsSection) attendanceDetailsSection.classList.remove('hidden');
+                validateDietaryCount();
+                validateShuttleCount();
+            } else {
+                if (attendanceDetailsSection) attendanceDetailsSection.classList.add('hidden');
+            }
+        }
+
+        // Toggle Mailing Address visibility based on Invitation Preference
+        function toggleInvitationFields() {
+            const invTypeEl = document.getElementById('invitation_type');
+            if (!invTypeEl) return;
+            const invType = invTypeEl.value;
+            
+            const paperAddressGroup = document.getElementById('paperAddressGroup');
+            const addressInput = document.getElementById('entry_488205070');
+            const receiverInput = document.getElementById('entry_1005421117');
+
+            if (paperAddressGroup) {
+                if (invType === '需要紙本喜帖，請寄給我') {
+                    paperAddressGroup.classList.remove('hidden');
+                    if (addressInput) addressInput.required = true;
+                    if (receiverInput) receiverInput.required = true;
+                } else {
+                    paperAddressGroup.classList.add('hidden');
+                    if (addressInput) addressInput.required = false;
+                    if (receiverInput) receiverInput.required = false;
+                }
+            }
+        }
+
+        let isSubmitting = false;
+
+        // 使用 Fetch API 送出表單
+        function submitToGoogleForm(event) {
+            event.preventDefault();
+
+            const attendanceEl = document.getElementById('entry_1486555222');
+            const dietHidden = document.getElementById('entry_950824364');
+            const attendance = attendanceEl ? attendanceEl.value : '';
+
+            if (attendance === '非常願意，我一定會到！') {
+                const isDietValid = validateDietaryCount();
+                const isShuttleValid = validateShuttleCount();
+
+                if (!isDietValid || !isShuttleValid) {
+                    if (!isDietValid) {
+                        const dietaryMsg = document.getElementById('dietaryValidationMsg');
+                        if (dietaryMsg) dietaryMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    } else if (!isShuttleValid) {
+                        const shuttleMsg = document.getElementById('shuttleValidationMsg');
+                        if (shuttleMsg) shuttleMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    return;
+                }
+            } else {
+                if (dietHidden) {
+                    dietHidden.value = '無特別需求';
+                }
+            }
+
+            const form = document.getElementById('weddingForm');
+            const formData = new FormData(form);
+            const actionUrl = form.action;
+
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+
+            if (btn) btn.disabled = true;
+            if (btnText) btnText.innerText = '傳送中...';
+            if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+            isSubmitting = true;
+
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                onSubmittedSuccess();
+            })
+            .catch((error) => {
+                console.error('Submission Error:', error);
+                alert('網路連線似乎有點問題，請稍後再試一次！');
+                if (btn) btn.disabled = false;
+                if (btnText) btnText.innerText = '確認送出出席回函';
+                if (btnSpinner) btnSpinner.classList.add('hidden');
+                isSubmitting = false;
+            });
+        }
+
+        function onSubmittedSuccess() {
+            if (!isSubmitting) return;
+            isSubmitting = false;
+
+            const btn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
+
+            if (btn) btn.disabled = false;
+            if (btnText) btnText.innerText = '確認送出出席回函';
+            if (btnSpinner) btnSpinner.classList.add('hidden');
+
+            showModal();
+        }
+
+        function showModal() {
+            const modal = document.getElementById('thankYouModal');
+            const modalContent = document.getElementById('modalContent');
+
+            if (modal) modal.classList.remove('opacity-0', 'pointer-events-none');
+            if (modalContent) {
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }
+
+            const form = document.getElementById('weddingForm');
+            if (form) form.reset();
+            handleAttendanceChange();
+            toggleInvitationFields();
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('thankYouModal');
+            const modalContent = document.getElementById('modalContent');
+
+            if (modal) modal.classList.add('opacity-0', 'pointer-events-none');
+            if (modalContent) {
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+            }
+        }
+
+        // Mobile Navigation Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu) mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu) mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Initialize Countdown Timer for Banquet Time (11:30 AM)
+        function updateCountdown() {
+            const weddingDate = new Date('2027-01-17T11:30:00+08:00').getTime();
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                const dEl = document.getElementById('cd-days');
+                const hEl = document.getElementById('cd-hours');
+                const mEl = document.getElementById('cd-minutes');
+                const sEl = document.getElementById('cd-seconds');
+
+                if (dEl) dEl.innerText = String(days).padStart(2, '0');
+                if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+                if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+                if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            handleAttendanceChange();
+            toggleInvitationFields();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
+    </script>
+</body>
+</html>
