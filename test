@@ -1,0 +1,79 @@
+let isSubmitting = false;
+
+    // 使用 Fetch API 提交表單
+    function submitToGoogleForm(event) {
+        event.preventDefault(); // 阻止傳統表單跳轉
+
+        const attendanceEl = document.getElementById('entry_1486555222');
+        const dietHidden = document.getElementById('entry_950824364');
+        const attendance = attendanceEl ? attendanceEl.value : '';
+
+        // 1. 出席意願驗證
+        if (attendance === '非常願意，我一定會到！') {
+            const isDietValid = validateDietaryCount();
+            const isShuttleValid = validateShuttleCount();
+
+            if (!isDietValid || !isShuttleValid) {
+                if (!isDietValid) {
+                    const dietaryMsg = document.getElementById('dietaryValidationMsg');
+                    if (dietaryMsg) dietaryMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else if (!isShuttleValid) {
+                    const shuttleMsg = document.getElementById('shuttleValidationMsg');
+                    if (shuttleMsg) shuttleMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+        } else {
+            if (dietHidden) {
+                dietHidden.value = '無特別需求';
+            }
+        }
+
+        const form = document.getElementById('weddingForm');
+        const formData = new FormData(form);
+        const actionUrl = form.action;
+
+        const btn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+
+        if (btn) btn.disabled = true;
+        if (btnText) btnText.innerText = '傳送中...';
+        if (btnSpinner) btnSpinner.classList.remove('hidden');
+
+        isSubmitting = true;
+
+        // 使用 Fetch API 搭配 no-cors 拋送資料
+        fetch(actionUrl, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        })
+        .then(() => {
+            // 成功送達後執行畫面更新與跳出感謝視窗
+            onSubmittedSuccess();
+        })
+        .catch((error) => {
+            console.error('Submission Error:', error);
+            alert('網路連線似乎有點問題，請稍後再試一次！');
+            if (btn) btn.disabled = false;
+            if (btnText) btnText.innerText = '確認送出出席回函';
+            if (btnSpinner) btnSpinner.classList.add('hidden');
+            isSubmitting = false;
+        });
+    }
+
+    function onSubmittedSuccess() {
+        if (!isSubmitting) return;
+        isSubmitting = false;
+
+        const btn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnSpinner = document.getElementById('btnSpinner');
+
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.innerText = '確認送出出席回函';
+        if (btnSpinner) btnSpinner.classList.add('hidden');
+
+        showModal();
+    }
