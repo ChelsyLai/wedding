@@ -1,79 +1,123 @@
-let isSubmitting = false;
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex & Chelsy's Wedding Invitation</title>
+    
+    <!-- Google Fonts: Cormorant Garamond & Noto Serif TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Noto+Serif+TC:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    // 使用 Fetch API 提交表單
-    function submitToGoogleForm(event) {
-        event.preventDefault(); // 阻止傳統表單跳轉
-
-        const attendanceEl = document.getElementById('entry_1486555222');
-        const dietHidden = document.getElementById('entry_950824364');
-        const attendance = attendanceEl ? attendanceEl.value : '';
-
-        // 1. 出席意願驗證
-        if (attendance === '非常願意，我一定會到！') {
-            const isDietValid = validateDietaryCount();
-            const isShuttleValid = validateShuttleCount();
-
-            if (!isDietValid || !isShuttleValid) {
-                if (!isDietValid) {
-                    const dietaryMsg = document.getElementById('dietaryValidationMsg');
-                    if (dietaryMsg) dietaryMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else if (!isShuttleValid) {
-                    const shuttleMsg = document.getElementById('shuttleValidationMsg');
-                    if (shuttleMsg) shuttleMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        morandi: {
+                            warm: '#F3BD57',  // Warm Sun
+                            sage: '#73965D',  // Sage Green
+                            sagelight: '#eef4ed',
+                            sand: '#F7F4EF',
+                            cream: '#FCFBF7',
+                            charcoal: '#333333',
+                            muted: '#718096'
+                        }
+                    },
+                    fontFamily: {
+                        garamond: ['Cormorant Garamond', 'serif'],
+                        serif: ['Noto Serif TC', 'serif']
+                    }
                 }
-                return;
-            }
-        } else {
-            if (dietHidden) {
-                dietHidden.value = '無特別需求';
             }
         }
+    </script>
 
-        const form = document.getElementById('weddingForm');
-        const formData = new FormData(form);
-        const actionUrl = form.action;
+    <style>
+        body {
+            font-family: 'Noto Serif TC', serif;
+            background-color: #FAF8F5;
+            color: #333333;
+            overflow-x: hidden;
+        }
+        
+        .font-garamond {
+            font-family: 'Cormorant Garamond', serif;
+        }
 
-        const btn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnSpinner = document.getElementById('btnSpinner');
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(243, 189, 87, 0.25);
+        }
 
-        if (btn) btn.disabled = true;
-        if (btnText) btnText.innerText = '傳送中...';
-        if (btnSpinner) btnSpinner.classList.remove('hidden');
+        /* Countdown Micro Glow Card */
+        .glow-card {
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 10px 25px -5px rgba(115, 150, 93, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(243, 189, 87, 0.4);
+            backdrop-filter: blur(8px);
+        }
 
-        isSubmitting = true;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FAF8F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #73965D;
+            border-radius: 3px;
+        }
 
-        // 使用 Fetch API 搭配 no-cors 拋送資料
-        fetch(actionUrl, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors'
-        })
-        .then(() => {
-            // 成功送達後執行畫面更新與跳出感謝視窗
-            onSubmittedSuccess();
-        })
-        .catch((error) => {
-            console.error('Submission Error:', error);
-            alert('網路連線似乎有點問題，請稍後再試一次！');
-            if (btn) btn.disabled = false;
-            if (btnText) btnText.innerText = '確認送出出席回函';
-            if (btnSpinner) btnSpinner.classList.add('hidden');
-            isSubmitting = false;
-        });
-    }
+        /* Accordion transition */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0, 1, 0, 1);
+        }
+        .accordion-content.active {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in-out;
+        }
 
-    function onSubmittedSuccess() {
-        if (!isSubmitting) return;
-        isSubmitting = false;
+        .no-select {
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="antialiased text-morandi-charcoal">
 
-        const btn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnSpinner = document.getElementById('btnSpinner');
+    <!-- Glassmorphism Fixed Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300 py-3 md:py-4 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="font-garamond text-xl md:text-2xl font-semibold tracking-wider text-morandi-sage">
+                Alex <span class="text-morandi-warm">&amp;</span> Lai
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-widest">
+                <a href="#about" class="hover:text-morandi-sage transition-colors py-1 border-b-2 border-transparent hover:border-morandi-warm">關於我們</a>
+                <a href="#details" class="hover:text-morandi-sage transition-colors py-1 border-b-2 border-transparent hover:border-morandi-warm">婚禮詳情</a>
+                <a href="#transport" class="hover:text-morandi-sage transition-colors py-1 border-b-2 border-transparent hover:border-morandi-warm">交通指引</a>
+                <a href="#form" class="bg-morandi-warm text-white px-5 py-2 rounded-full hover:bg-opacity-90 transition-all shadow-sm">出席回函</a>
+            </div>
 
-        if (btn) btn.disabled = false;
-        if (btnText) btnText.innerText = '確認送出出席回函';
-        if (btnSpinner) btnSpinner.classList.add('hidden');
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle" class="md:hidden text-morandi-charcoal focus:outline-none p-2" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
 
-        showModal();
-    }
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 px-4 space-y-3 flex flex-col text-center border-t border-morandi-warm/20 mt-3">
+            <a href="#about" class="mobile-link py-2 text
