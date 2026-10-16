@@ -213,7 +213,6 @@
         </div>
     </section>
 
-    
     <!-- Section: Wedding Details Vertical V-Cards (Banquet Only) -->
     <section id="details" class="py-20 px-4 bg-morandi-sand/50 border-y border-morandi-warm/20">
         <div class="max-w-4xl mx-auto">
@@ -320,8 +319,8 @@
                         </p>
                         <div class="text-xs text-amber-700/80 font-medium pl-6 space-y-1">
                             <p>※溫馨提示：理性飲酒，喝酒請勿開車。</p>
-                            <p>※停車資訊：酒店本館及別館地下室皆設有停車場，惟停車位數量有限，恕無法提供車位預留服務，敬請見諒。</p>
-                            <p>※每逢假日出遊車潮多，易塞車，敬請賓客提早出發。</p>
+                            <p>※酒店本館及別館地下室皆設有停車場，惟停車位數量有限，恕無法提供車位預留服務，敬請見諒。</p>
+                            <p>※假日出遊車潮多，易塞車，敬請賓客提早出發。</p>
                         </div>
                     </div>
                 </div>
@@ -505,7 +504,7 @@
                                 <i class="fa-solid fa-bus text-amber-600 mr-1.5"></i> 接駁車規劃說明：
                             </p>
                             <p class="text-amber-700/90 font-light">
-                                ※ 目前正在規劃中，地點為大台北市區，正確地點及發車時間待定。因車輛座位有限，目前僅作為意願調查（不保證一定有位），須請先考慮無接駁車的交通備案，我們將於婚禮前主動聯繫通知。
+                                ※ 目前正在規劃中，地點為大台北市區，正確地點及發車時間待定。因車輛座位有限，目前僅作為意願調查（不保證一定有位），須請先考慮自行前往的交通備案，我們將於婚禮前主動聯繫通知。
                             </p>
                         </div>
 
@@ -568,7 +567,6 @@
                            class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                 </div>
 
-                
                 <!-- 紙本喜帖地址區塊 -->
                 <div id="paperAddressGroup" class="hidden space-y-6">
                     <!-- 喜帖收件人姓名及電話 (entry.1005421117) -->
@@ -653,7 +651,7 @@
             </div>
             <h3 class="text-xl font-semibold text-gray-800 mb-2">回函已成功送出！</h3>
             <p class="text-sm text-gray-500 font-light leading-relaxed mb-6">
-                您能撥空填單就是一份心意祝福，我們已收到回覆，若您能前來，我們很期待在婚禮當天與您相見！😉
+               您能撥空填單就是一份心意祝福，我們已收到回覆，若您能前來，我們很期待在婚禮當天與您相見！😉
             </p>
             <button onclick="closeModal()" class="w-full py-3 bg-morandi-sage text-white rounded-xl text-sm tracking-wider font-medium hover:bg-opacity-90 transition-all">
                 關閉視窗
@@ -762,6 +760,7 @@
             const paperAddressGroup = document.getElementById('paperAddressGroup');
             const emailInput = document.getElementById('entry_1240707661');
             const addressInput = document.getElementById('entry_488205070');
+            const receiverInput = document.getElementById('entry_1005421117');
 
             if (emailGroup) {
                 if (invType === '電子喜帖' || invType === '電子與紙本喜帖皆需要') {
@@ -777,9 +776,11 @@
                 if (invType === '紙本喜帖' || invType === '電子與紙本喜帖皆需要') {
                     paperAddressGroup.classList.remove('hidden');
                     if (addressInput) addressInput.required = true;
+                    if (receiverInput) receiverInput.required = true;
                 } else {
                     paperAddressGroup.classList.add('hidden');
                     if (addressInput) addressInput.required = false;
+                    if (receiverInput) receiverInput.required = false;
                 }
             }
         }
