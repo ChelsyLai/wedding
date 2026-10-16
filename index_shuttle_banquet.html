@@ -263,6 +263,33 @@
                 </div>
             </div>
         </div>
+                  <!-- 飯店地圖：參考洲際酒店聯絡我們頁面的地圖呈現方式 -->
+                <div class="bg-white rounded-3xl p-4 md:p-6 shadow-sm border border-stone-200/60">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4 px-1">
+                        <div>
+                            <h3 class="text-base md:text-lg font-semibold tracking-wide text-morandi-charcoal">飯店位置</h3>
+                            <p class="text-xs md:text-sm text-gray-500 mt-1">新北市金山區環金路210號</p>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query=%E6%96%B0%E5%8C%97%E5%8C%97%E6%B5%B7%E6%BA%AB%E6%B3%89%E6%B4%B2%E9%9A%9B%E9%85%92%E5%BA%97"
+                           target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm text-morandi-sage hover:underline">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>在 Google 地圖中開啟
+                        </a>
+                    </div>
+                    <div class="overflow-hidden rounded-2xl border border-stone-200">
+                        <iframe
+                            title="新北北海溫泉洲際酒店地圖"
+                            src="https://www.google.com/maps?q=%E6%96%B0%E5%8C%97%E5%8C%97%E6%B5%B7%E6%BA%AB%E6%B3%89%E6%B4%B2%E9%9A%9B%E9%85%92%E5%BA%97&output=embed"
+                            width="100%" height="320"
+                            style="border:0;"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Section: Traffic Accordion Info -->
@@ -293,7 +320,8 @@
                         </p>
                         <div class="text-xs text-amber-700/80 font-medium pl-6 space-y-1">
                             <p>※溫馨提示：理性飲酒，喝酒請勿開車。</p>
-                            <p>※假日出遊車潮多，易塞車，敬請賓客提早出發。</p>
+                            <p>※停車資訊：酒店本館及別館地下室皆設有停車場，惟停車位數量有限，恕無法提供車位預留服務，敬請見諒。</p>
+                            <p>※每逢假日出遊車潮多，易塞車，敬請賓客提早出發。</p>
                         </div>
                     </div>
                 </div>
@@ -543,6 +571,20 @@
                 <!-- 紙本喜帖地址區塊 -->
                 <div id="paperAddressGroup" class="hidden space-y-6">
                     <!-- 郵遞區號 POSTAL CODE (entry.2067402011) -->
+                     <div id="paperAddressGroup" class="hidden space-y-6">
+                    <!-- 喜帖收件人姓名及電話 (entry.1005421117) -->
+                    <div>
+                        <label for="entry_1005421117" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                            喜帖收件人姓名及電話 <span class="font-garamond font-normal text-gray-400">RECEIVER'S NAME &amp; PHONE</span> <span class="text-red-400">*</span>
+                        </label>
+                        <input type="text"
+                               name="entry.1005421117"
+                               id="entry_1005421117"
+                               placeholder="請輸入收件者姓名及電話"
+                               autocomplete="name"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
+                    </div>
+                    
                     <div>
                         <label for="entry_2067402011" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             郵遞區號 <span class="font-garamond font-normal text-gray-400">POSTAL CODE</span>
