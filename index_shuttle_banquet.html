@@ -495,7 +495,7 @@
 
                     <!-- 接駁車搭乘意願 SHUTTLE BUS (entry.499630872) -->
                     <div>
-                        <label for="entry_499630872" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                        <label for="entry_663434225" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             接駁車搭乘意願 / 人數 <span class="font-garamond font-normal text-gray-400">SHUTTLE BUS</span>
                         </label>
                         
@@ -509,10 +509,10 @@
                         </div>
 
                         <div>
-                            <label for="entry_499630872" class="block text-xs text-gray-600 mb-1">搭乘接駁車人數 (預設 0 表示不需要)</label>
+                            <label for="entry_663434225" class="block text-xs text-gray-600 mb-1">搭乘接駁車人數 (預設 0 表示不需要)</label>
                             <input type="number" 
-                                   name="entry.499630872" 
-                                   id="entry_499630872" 
+                                   name="entry.1211188340" 
+                                   id="entry_663434225" 
                                    min="0" 
                                    max="10" 
                                    value="0"
@@ -548,24 +548,11 @@
                             id="invitation_type" 
                             onchange="toggleInvitationFields()"
                             class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
-                        <option value="不需要" selected>不需要</option>
-                        <option value="電子喜帖">需要電子喜帖</option>
-                        <option value="紙本喜帖">需要紙本喜帖</option>
-                        <option value="電子與紙本喜帖皆需要">電子與紙本喜帖皆需要</option>
+                        <option value="不需要" selected>不需要，我會保留這個網頁</option>
+                        <option value="紙本喜帖">需要紙本喜帖，請寄給我</option>
                     </select>
                 </div>
 
-                <!-- 電子郵件 EMAIL (entry.1240707661) -->
-                <div id="emailGroup" class="hidden">
-                    <label for="entry_1240707661" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
-                        電子郵件 <span class="font-garamond font-normal text-gray-400">EMAIL</span> <span class="text-red-400">*</span>
-                    </label>
-                    <input type="email" 
-                           name="entry.1240707661" 
-                           id="entry_1240707661" 
-                           placeholder="example@mail.com"
-                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
-                </div>
 
                 <!-- 紙本喜帖地址區塊 -->
                 <div id="paperAddressGroup" class="hidden space-y-6">
