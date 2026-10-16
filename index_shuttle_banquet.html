@@ -493,7 +493,7 @@
                         <div id="dietaryValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
                     </div>
 
-                    <!-- 接駁車搭乘意願 SHUTTLE BUS (entry.499630872) -->
+                    <!-- 接駁車搭乘意願 SHUTTLE BUS (entry.663434225) -->
                     <div>
                         <label for="entry_663434225" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             接駁車搭乘意願 / 人數 <span class="font-garamond font-normal text-gray-400">SHUTTLE BUS</span>
@@ -511,7 +511,7 @@
                         <div>
                             <label for="entry_663434225" class="block text-xs text-gray-600 mb-1">搭乘接駁車人數 (預設 0 表示不需要)</label>
                             <input type="number" 
-                                   name="entry.1211188340" 
+                                   name="entry.663434225" 
                                    id="entry_663434225" 
                                    min="0" 
                                    max="10" 
@@ -524,13 +524,13 @@
                         <div id="shuttleValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
                     </div>
 
-                    <!-- 兒童座椅 CHILD SEATS (entry.850592703) -->
+                    <!-- 兒童座椅 CHILD SEATS (entry.431306330) -->
                     <div>
                         <label for="entry_850592703" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             兒童座椅需求 <span class="font-garamond font-normal text-gray-400">CHILD SEATS NEEDED</span>
                         </label>
-                        <select name="entry.850592703" 
-                                id="entry_850592703" 
+                        <select name="entry.431306330" 
+                                id="entry_431306330" 
                                 class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
                             <option value="不需要" selected>不需要</option>
                             <option value="需要">需要</option>
@@ -549,7 +549,7 @@
                             onchange="toggleInvitationFields()"
                             class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
                         <option value="不需要" selected>不需要，我會保留這個網頁</option>
-                        <option value="紙本喜帖">需要紙本喜帖，請寄給我</option>
+                        <option value="需要紙本喜帖，請寄給我">需要紙本喜帖，請寄給我</option>
                     </select>
                 </div>
 
@@ -696,10 +696,10 @@
             }
         }
 
-        // Dynamic Shuttle Bus Count Validation (entry.499630872 <= entry.855032257)
+        // Dynamic Shuttle Bus Count Validation (entry.663434225 <= entry.855032257)
         function validateShuttleCount() {
             const luncheonEl = document.getElementById('entry_855032257');
-            const shuttleEl = document.getElementById('entry_499630872');
+            const shuttleEl = document.getElementById('entry_663434225');
             const msgEl = document.getElementById('shuttleValidationMsg');
 
             if (!luncheonEl || !shuttleEl || !msgEl) return true;
@@ -760,7 +760,7 @@
             }
 
             if (paperAddressGroup) {
-                if (invType === '紙本喜帖' || invType === '電子與紙本喜帖皆需要') {
+                if (invType === '需要紙本喜帖，請寄給我' || invType === '電子與紙本喜帖皆需要') {
                     paperAddressGroup.classList.remove('hidden');
                     if (addressInput) addressInput.required = true;
                     if (receiverInput) receiverInput.required = true;
