@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex & Chelsy's Wedding Invitation</title>
+    <title>Alex &amp; Chelsy's Wedding Invitation</title>
     
     <!-- Google Fonts: Cormorant Garamond & Noto Serif TC -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,7 +262,7 @@
                     </div>
                 </div>
 
-                <!-- 飯店地圖：參考洲際酒店聯絡我們頁面的地圖呈現方式 -->
+                <!-- 飯店地圖 -->
                 <div class="bg-white rounded-3xl p-4 md:p-6 shadow-sm border border-stone-200/60">
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4 px-1">
                         <div>
@@ -337,8 +337,6 @@
                 </button>
                 <div id="acc-transit" class="accordion-content border-t border-gray-100 bg-stone-50/50">
                     <div class="p-6 text-sm text-gray-600 leading-relaxed space-y-5">
-                        
-                        <!-- 站點群組 1：金山區公所 -->
                         <div class="space-y-2">
                             <div class="font-medium text-gray-800 flex items-center">
                                 <i class="fa-solid fa-bus-simple text-morandi-warm mr-2"></i>
@@ -353,8 +351,6 @@
                                 <i class="fa-solid fa-person-walking mr-1"></i>於「金山區公所」站牌下車後步行約 15 分鐘。
                             </p>
                         </div>
-
-                        <!-- 站點群組 2：中正路或金山醫院 -->
                         <div class="border-t border-stone-200/60 pt-4 space-y-2">
                             <div class="font-medium text-gray-800 flex items-center">
                                 <i class="fa-solid fa-bus-simple text-morandi-warm mr-2"></i>
@@ -368,7 +364,6 @@
                                 <i class="fa-solid fa-person-walking mr-1"></i>於「中正路」或「金山醫院」站牌兩者皆可下車，下車後步行約 6 分鐘。
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -384,15 +379,11 @@
                 <p class="text-xs md:text-sm text-gray-500 font-light">請於 2026 年 11 月 15 日前填寫完成，方便我們為您準備座位</p>
             </div>
 
-            <!-- Hidden Iframe for smooth background submission -->
-            <iframe name="hidden_iframe" id="hidden_iframe" title="回函送出回應" style="display:none;" onload="if(window.isSubmitting){ onSubmittedSuccess(); }"></iframe>
-
-            <!-- Google Form action endpoint -->
+            <!-- Google Form action endpoint (已改用 Fetch API，移除 iframe 相關綁定) -->
             <form id="weddingForm" 
                   action="https://docs.google.com/forms/d/e/1FAIpQLScxnJ-Uz2Ye8whGI4o2LJOL-1gjqsM0-m6aBx8temfrJtwOLQ/formResponse"
                   method="POST"
-                  target="hidden_iframe"
-                  onsubmit="handleFormSubmit(event)"
+                  onsubmit="submitToGoogleForm(event)"
                   class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200/80 space-y-6">
 
                 <!-- 1. 姓名 NAME (entry.1295883042) -->
@@ -443,7 +434,7 @@
                     </select>
                 </div>
 
-                <!-- DYNAMIC ATTENDANCE DETAILS (Shows ONLY when 出席意願 == '非常願意，我一定會到！') -->
+                <!-- DYNAMIC ATTENDANCE DETAILS -->
                 <div id="attendanceDetailsSection" class="hidden space-y-6 pt-2 border-t border-dashed border-gray-200">
                     
                     <!-- 午宴人數 LUNCHEON ATTENDEES (entry.855032257) -->
@@ -488,8 +479,6 @@
                                        class="w-full px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 bg-white text-sm">
                             </div>
                         </div>
-                        
-                        <!-- 人數相符對應提示訊息 -->
                         <div id="dietaryValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
                     </div>
 
@@ -519,8 +508,6 @@
                                    oninput="validateShuttleCount()"
                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all bg-white">
                         </div>
-
-                        <!-- 接駁車人數動態驗證提示 -->
                         <div id="shuttleValidationMsg" class="mt-2 text-xs font-medium px-2 py-1 rounded-md transition-all"></div>
                     </div>
 
@@ -553,10 +540,8 @@
                     </select>
                 </div>
 
-
                 <!-- 紙本喜帖地址區塊 -->
                 <div id="paperAddressGroup" class="hidden space-y-6">
-                    <!-- 喜帖收件人姓名及電話 (entry.1005421117) -->
                     <div>
                         <label for="entry_1005421117" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             喜帖收件人姓名及電話 <span class="font-garamond font-normal text-gray-400">RECEIVER'S NAME &amp; PHONE</span> <span class="text-red-400">*</span>
@@ -569,7 +554,6 @@
                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                     </div>
 
-                    <!-- 郵遞區號 POSTAL CODE (entry.2067402011) -->
                     <div>
                         <label for="entry_2067402011" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             郵遞區號 <span class="font-garamond font-normal text-gray-400">POSTAL CODE</span>
@@ -581,7 +565,6 @@
                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-morandi-sage/40 focus:border-morandi-sage text-sm transition-all">
                     </div>
 
-                    <!-- 喜帖寄送地址 ADDRESS (entry.488205070) -->
                     <div>
                         <label for="entry_488205070" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             喜帖寄送地址 <span class="font-garamond font-normal text-gray-400">MAILING ADDRESS</span> <span class="text-red-400">*</span>
@@ -655,7 +638,6 @@
 
             const isOpen = content.classList.contains('active');
             
-            // Close all contents
             document.querySelectorAll('.accordion-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.accordion-header i').forEach(el => el.classList.remove('rotate-180'));
 
@@ -680,7 +662,6 @@
             const vegCount = parseInt(vegEl.value, 10) || 0;
             const totalDiet = meatCount + vegCount;
 
-            // Sync structured text into the dedicated Google Form Entry field (entry.950824364)
             if (dietHidden) {
                 dietHidden.value = `葷食 ${meatCount} 人, 素食 ${vegCount} 人`;
             }
@@ -737,30 +718,18 @@
             }
         }
 
-        // Toggle Email and Mailing Address visibility based on Invitation Preference
+        // Toggle Mailing Address visibility based on Invitation Preference
         function toggleInvitationFields() {
             const invTypeEl = document.getElementById('invitation_type');
             if (!invTypeEl) return;
             const invType = invTypeEl.value;
             
-            const emailGroup = document.getElementById('emailGroup');
             const paperAddressGroup = document.getElementById('paperAddressGroup');
-            const emailInput = document.getElementById('entry_1240707661');
             const addressInput = document.getElementById('entry_488205070');
             const receiverInput = document.getElementById('entry_1005421117');
 
-            if (emailGroup) {
-                if (invType === '電子喜帖' || invType === '電子與紙本喜帖皆需要') {
-                    emailGroup.classList.remove('hidden');
-                    if (emailInput) emailInput.required = true;
-                } else {
-                    emailGroup.classList.add('hidden');
-                    if (emailInput) emailInput.required = false;
-                }
-            }
-
             if (paperAddressGroup) {
-                if (invType === '需要紙本喜帖，請寄給我' || invType === '電子與紙本喜帖皆需要') {
+                if (invType === '需要紙本喜帖，請寄給我') {
                     paperAddressGroup.classList.remove('hidden');
                     if (addressInput) addressInput.required = true;
                     if (receiverInput) receiverInput.required = true;
@@ -774,26 +743,19 @@
 
         let isSubmitting = false;
 
-        function handleFormSubmit(event) {
-            // 明確接管送出流程，讓手機瀏覽器也走同一套原生表單 POST 流程。
-            // 後續使用 HTMLFormElement.prototype.submit()，避免再次觸發 onsubmit。
-            if (event) event.preventDefault();
-
-            // 避免手機連點造成重複送出。
-            if (window.isSubmitting) return false;
+        // 使用 Fetch API 送出表單
+        function submitToGoogleForm(event) {
+            event.preventDefault();
 
             const attendanceEl = document.getElementById('entry_1486555222');
             const dietHidden = document.getElementById('entry_950824364');
             const attendance = attendanceEl ? attendanceEl.value : '';
 
             if (attendance === '非常願意，我一定會到！') {
-                // 驗證飲食人數與接駁車人數
                 const isDietValid = validateDietaryCount();
                 const isShuttleValid = validateShuttleCount();
 
                 if (!isDietValid || !isShuttleValid) {
-                    if (event) event.preventDefault();
-                    
                     if (!isDietValid) {
                         const dietaryMsg = document.getElementById('dietaryValidationMsg');
                         if (dietaryMsg) dietaryMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -801,7 +763,7 @@
                         const shuttleMsg = document.getElementById('shuttleValidationMsg');
                         if (shuttleMsg) shuttleMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     }
-                    return false;
+                    return;
                 }
             } else {
                 if (dietHidden) {
@@ -809,46 +771,41 @@
                 }
             }
 
+            const form = document.getElementById('weddingForm');
+            const formData = new FormData(form);
+            const actionUrl = form.action;
+
             const btn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const btnSpinner = document.getElementById('btnSpinner');
-            const form = document.getElementById('weddingForm');
-
-            if (!form) {
-                window.isSubmitting = false;
-                if (btn) btn.disabled = false;
-                if (btnText) btnText.innerText = '確認送出出席回函';
-                if (btnSpinner) btnSpinner.classList.add('hidden');
-                alert('目前無法找到回函表單，請重新整理頁面後再試一次。');
-                return false;
-            }
 
             if (btn) btn.disabled = true;
             if (btnText) btnText.innerText = '傳送中...';
             if (btnSpinner) btnSpinner.classList.remove('hidden');
 
-            window.isSubmitting = true;
+            isSubmitting = true;
 
-            // 先讓手機畫面更新「傳送中...」，再明確提交至隱藏 iframe。
-            // 使用原生 submit 可避免 onsubmit 再次執行造成重複送出。
-            window.setTimeout(function () {
-                try {
-                    HTMLFormElement.prototype.submit.call(form);
-                } catch (error) {
-                    window.isSubmitting = false;
-                    if (btn) btn.disabled = false;
-                    if (btnText) btnText.innerText = '確認送出出席回函';
-                    if (btnSpinner) btnSpinner.classList.add('hidden');
-                    alert('回函送出時發生問題，請重新整理頁面後再試一次。若仍無法送出，請改用 Safari 或 Chrome 開啟網頁。');
-                }
-            }, 30);
-
-            return false;
+            fetch(actionUrl, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(() => {
+                onSubmittedSuccess();
+            })
+            .catch((error) => {
+                console.error('Submission Error:', error);
+                alert('網路連線似乎有點問題，請稍後再試一次！');
+                if (btn) btn.disabled = false;
+                if (btnText) btnText.innerText = '確認送出出席回函';
+                if (btnSpinner) btnSpinner.classList.add('hidden');
+                isSubmitting = false;
+            });
         }
 
         function onSubmittedSuccess() {
-            if (!window.isSubmitting) return;
-            window.isSubmitting = false;
+            if (!isSubmitting) return;
+            isSubmitting = false;
 
             const btn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
@@ -916,10 +873,15 @@
                 const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
-                document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+                const dEl = document.getElementById('cd-days');
+                const hEl = document.getElementById('cd-hours');
+                const mEl = document.getElementById('cd-minutes');
+                const sEl = document.getElementById('cd-seconds');
+
+                if (dEl) dEl.innerText = String(days).padStart(2, '0');
+                if (hEl) hEl.innerText = String(hours).padStart(2, '0');
+                if (mEl) mEl.innerText = String(minutes).padStart(2, '0');
+                if (sEl) sEl.innerText = String(seconds).padStart(2, '0');
             }
         }
 
