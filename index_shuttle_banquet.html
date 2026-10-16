@@ -385,7 +385,7 @@
             </div>
 
             <!-- Hidden Iframe for smooth background submission -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.isSubmitting){ onSubmittedSuccess(); }"></iframe>
+            <iframe name="hidden_iframe" id="hidden_iframe" title="回函送出回應" style="display:none;" onload="if(window.isSubmitting){ onSubmittedSuccess(); }"></iframe>
 
             <!-- Google Form action endpoint -->
             <form id="weddingForm" 
@@ -526,7 +526,7 @@
 
                     <!-- 兒童座椅 CHILD SEATS (entry.431306330) -->
                     <div>
-                        <label for="entry_850592703" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
+                        <label for="entry_431306330" class="block text-xs md:text-sm font-medium text-gray-700 tracking-wider mb-2">
                             兒童座椅需求 <span class="font-garamond font-normal text-gray-400">CHILD SEATS NEEDED</span>
                         </label>
                         <select name="entry.431306330" 
@@ -775,6 +775,13 @@
         let isSubmitting = false;
 
         function handleFormSubmit(event) {
+            // 明確接管送出流程，讓手機瀏覽器也走同一套原生表單 POST 流程。
+            // 後續使用 HTMLFormElement.prototype.submit()，避免再次觸發 onsubmit。
+            if (event) event.preventDefault();
+
+            // 避免手機連點造成重複送出。
+            if (window.isSubmitting) return false;
+
             const attendanceEl = document.getElementById('entry_1486555222');
             const dietHidden = document.getElementById('entry_950824364');
             const attendance = attendanceEl ? attendanceEl.value : '';
@@ -805,12 +812,38 @@
             const btn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const btnSpinner = document.getElementById('btnSpinner');
+            const form = document.getElementById('weddingForm');
+
+            if (!form) {
+                window.isSubmitting = false;
+                if (btn) btn.disabled = false;
+                if (btnText) btnText.innerText = '確認送出出席回函';
+                if (btnSpinner) btnSpinner.classList.add('hidden');
+                alert('目前無法找到回函表單，請重新整理頁面後再試一次。');
+                return false;
+            }
 
             if (btn) btn.disabled = true;
             if (btnText) btnText.innerText = '傳送中...';
             if (btnSpinner) btnSpinner.classList.remove('hidden');
 
             window.isSubmitting = true;
+
+            // 先讓手機畫面更新「傳送中...」，再明確提交至隱藏 iframe。
+            // 使用原生 submit 可避免 onsubmit 再次執行造成重複送出。
+            window.setTimeout(function () {
+                try {
+                    HTMLFormElement.prototype.submit.call(form);
+                } catch (error) {
+                    window.isSubmitting = false;
+                    if (btn) btn.disabled = false;
+                    if (btnText) btnText.innerText = '確認送出出席回函';
+                    if (btnSpinner) btnSpinner.classList.add('hidden');
+                    alert('回函送出時發生問題，請重新整理頁面後再試一次。若仍無法送出，請改用 Safari 或 Chrome 開啟網頁。');
+                }
+            }, 30);
+
+            return false;
         }
 
         function onSubmittedSuccess() {
